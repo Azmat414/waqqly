@@ -16,6 +16,12 @@ app.use('/api/pets', petRoutes);
 app.use('/api/walkers', walkerRoutes);
 app.use('/api', contactRoutes);
 
+//Route endpoint
+app.get('/', (req, res) => {
+  res.send('Welcome to the Waqqly.ly API');
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
