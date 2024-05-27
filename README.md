@@ -28,5 +28,5 @@ Waqq.ly is a web application that helps dog owners find dog walkers in their are
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/waqqly.git
+   https://github.com/Azmat414/waqqly.git
    cd waqqly
