@@ -16,8 +16,18 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
+    - name: Install Docker
+      run: |
+        sudo amazon-linux-extras install docker
+        sudo service docker start
+        sudo usermod -a -G docker $USER
     - run: npm install
     - run: npm test
     - run: docker build -t waqqly-backend .
     - name: Push to Docker Hub
-      run: docker push waqqly-backend
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        docker push waqqly-backend
